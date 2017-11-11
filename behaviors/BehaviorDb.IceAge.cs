@@ -34,7 +34,7 @@ namespace wServer.logic
                 new State("start behavior",
                     new Taunt("I have deemed you worthy to get killed my by blade"),
                     new ChangeSize(20, 150),
-                    new Shoot(20, 5, shootAngle: 25, projectileIndex: 0, predictive: 1, coolDown: 500),
+                    new Shoot(20, 5, shootAngle: 25, projectileIndex: 0, predictive: 0, coolDown: 500),
                     new Shoot(20, 4, shootAngle: 10, projectileIndex: 3, predictive: 1, coolDown: 3500),
                     new Shoot(10, 10, shootAngle: 36, projectileIndex: 1, coolDown: 2000),
                     new HpLessTransition(0.5, "rageup")
@@ -47,7 +47,7 @@ namespace wServer.logic
                     ),
                 new State("rage_phase",
                     new Grenade(5, damage: 200, range: 15, coolDown: 1000),
-                    new Shoot(15, count: 6, shootAngle: 50, projectileIndex: 2, predictive: 1, coolDown: 2500),
+                    new Shoot(15, count: 6, shootAngle: 50, projectileIndex: 2, predictive: 0.1, coolDown: 2500),
                     new Shoot(20, 12, shootAngle: 30, projectileIndex: 1, coolDown: 10000),
                     new Spawn("Frost Knight", 1, 1, coolDown: 2000),
                     new HpLessTransition(0.3, "suicidenear")
@@ -117,7 +117,7 @@ namespace wServer.logic
                         new Wander(0.4),
                         new Follow(1.2, range: 3)
                         ),
-                    new Shoot(10, 4, shootAngle: 30, projectileIndex: 0, predictive: 1, coolDown: 1000),
+                    new Shoot(10, 4, shootAngle: 30, projectileIndex: 0, coolDown: 1000),
                     new TimedTransition(10000, "protect_stage")
                     ),
                 new State("protect_stage",
@@ -131,7 +131,7 @@ namespace wServer.logic
         .Init("Frost Wizard",
             new State(
                 new Prioritize(
-                new Shoot(15, 2, shootAngle: 10, projectileIndex: 0, predictive: 1, coolDown: 1000)
+                new Shoot(15, 2, shootAngle: 10, projectileIndex: 0, predictive: 0.3, coolDown: 1000)
                     )
                 )
         );
