@@ -31,11 +31,11 @@ namespace wServer.logic
                     new ConditionalEffect(ConditionEffectIndex.Armored),
                     new Taunt("You cannot pierce my supperior defense"),
                     new Taunt("I'm too fast fo you, sonic you fool!"),
-                    new Shoot(10, 3, shootAngle: 9, projectileIndex: 1, predictive: 1, coolDown: 700),
+                    new Shoot(10, 3, shootAngle: 9, projectileIndex: 1, predictive: 0.2, coolDown: 700),
                     new TimedTransition(20000, "shoot_phase")
                     ),
                 new State("shoot_phase",
-                    new Shoot(10, count: 2, projectileIndex: 1, shootAngle: 30, predictive: 1, coolDown: 400),
+                    new Shoot(10, count: 2, projectileIndex: 1, shootAngle: 30, coolDown: 400),
                     new Shoot(10, count: 4, projectileIndex: 2, shootAngle: 20, predictive: 1, coolDown: 600),
                     new Shoot(4, count: 8, projectileIndex: 3, shootAngle: 45, coolDown: 300),
                     new Spawn("Demon Archer", maxChildren: 3, initialSpawn: 2, coolDown: 2000),
@@ -52,7 +52,7 @@ namespace wServer.logic
                     new TossObject("Demon Archer", range: 3, angle: 180, coolDown: 70000),
                     new TossObject("Demon Archer", range: 3, angle: 225, coolDown: 70000),
                     new TossObject("Demon Archer", range: 3, angle: 270, coolDown: 70000),
-                    new Shoot(20, count: 5, projectileIndex: 3, shootAngle: 40, predictive: 1, coolDown: 500),
+                    new Shoot(20, count: 5, projectileIndex: 3, shootAngle: 40, predictive: 0.1, coolDown: 500),
                     new Shoot(15, count: 4, projectileIndex: 2, shootAngle: 30, predictive: 1, coolDown: 750),
                     new HpLessTransition(0.3, "final_stage")
                     ),
@@ -83,7 +83,7 @@ namespace wServer.logic
                         new Follow(1, range: 10)
                         ),
                         new Taunt("Fear me human!"),
-                        new Shoot(10, count: 3, projectileIndex: 0, shootAngle: 20, predictive: 1, coolDown: 500)
+                        new Shoot(10, count: 3, projectileIndex: 0, shootAngle: 20, predictive: 0, coolDown: 500)
                     )
             )
             .Init("Demonic Walker",// for the dungeon, make him have low health <3k
@@ -91,7 +91,7 @@ namespace wServer.logic
                     new Prioritize(
                         new Wander(0.6)
                         ),
-                        new Shoot(7, count: 8, projectileIndex: 0, shootAngle: 40, predictive: 1, coolDown: 700)
+                        new Shoot(7, count: 8, projectileIndex: 0, shootAngle: 40, predictive: 0, coolDown: 700)
                     )
             )
         .Init("Terror Brute",//  high health <7k and is for the dungeon
@@ -102,7 +102,7 @@ namespace wServer.logic
                     ),
                 new State("spawn",
                     new Spawn("Demon Runner", maxChildren: 2, initialSpawn: 1, coolDown: 10000),
-                    new Shoot(10, count: 1, projectileIndex: 0, predictive: 1, coolDown: 1000)
+                    new Shoot(10, count: 1, projectileIndex: 0, predictive: 0.1, coolDown: 1000)
                     )
                 )
             )
@@ -114,7 +114,7 @@ namespace wServer.logic
                         new Wander(0.5),
                         new Follow(1.5, range: 4)
                         ),
-                    new Shoot(6, count: 3, shootAngle: 40, projectileIndex: 0, predictive: 1, coolDown: 500)
+                    new Shoot(6, count: 3, shootAngle: 40, projectileIndex: 0, predictive: 0.1, coolDown: 500)
                     )
             )
 
@@ -123,7 +123,7 @@ namespace wServer.logic
                  new State(
                      new State("orbit boss",
                          new Orbit(0.7, 10, target: "Demon King Akuma"),
-                         new Shoot(20, count: 1, projectileIndex: 0, predictive: 1, coolDown: 1000)
+                         new Shoot(20, count: 1, projectileIndex: 0, predictive: 0, coolDown: 1000)
                          )
                      )
             );
